@@ -2,6 +2,7 @@ package org.springside.examples.quickstart.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -17,7 +18,63 @@ public class JobInfo extends IdEntity {
 	private String jobxz;
 	private String jobtime;
 	private Date createDate;
+	private String jobinfo;
+	private String companyinfo;
+	private String isNew;
+	private String memo;
+	private String memo1;
+	private String memo2;
 	
+	@Column(length=1000)
+	public String getJobinfo() {
+		return jobinfo;
+	}
+
+	public void setJobinfo(String jobinfo) {
+		this.jobinfo = jobinfo;
+	}
+
+	@Column(length=1000)
+	public String getCompanyinfo() {
+		return companyinfo;
+	}
+
+	public void setCompanyinfo(String companyinfo) {
+		this.companyinfo = companyinfo;
+	}
+
+	public String getIsNew() {
+		return isNew;
+	}
+
+	public void setIsNew(String isNew) {
+		this.isNew = isNew;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
+	public String getMemo1() {
+		return memo1;
+	}
+
+	public void setMemo1(String memo1) {
+		this.memo1 = memo1;
+	}
+
+	public String getMemo2() {
+		return memo2;
+	}
+
+	public void setMemo2(String memo2) {
+		this.memo2 = memo2;
+	}
+
 	public String getJobtime() {
 		return jobtime;
 	}
