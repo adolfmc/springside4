@@ -1,5 +1,6 @@
 package org.springside.examples.quickstart.web.jobs;
 
+
 import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.Date;
