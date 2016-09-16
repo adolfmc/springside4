@@ -144,23 +144,21 @@ public class JobsJsoup {
 					
 			};
 			
-			String[] url2 = new String[200];
 			List<String> urllist = new ArrayList<String>();
-			url2[0] = "https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=";
-			for (int i = 1; i <=199; i++) {
-				urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=&curPage=" +( i+400));
-				url2[i] = "https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=&curPage=" +( i+400);
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=");
+			for (int i = 1; i <=1000; i++) {
+				urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=&curPage=" +( i+600));
 			}
 			
-			saveInfo(url2);
+			saveInfo(urllist);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	@Transactional
-	public void saveInfo(String[] url2) throws Exception, InterruptedException {
-		for (String string : url2) {
+	public void saveInfo(List<String> urllist) throws Exception, InterruptedException {
+		for (String string : urllist) {
 			collect(string);
 			System.out.println("================4========");
 			Set<String> infos = vmap.keySet();

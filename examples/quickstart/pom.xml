@@ -61,11 +61,11 @@
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-<!-- 		<dependency>
+		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.6.3</version>
-		</dependency> -->
+			<version>1.8.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.htmlparser</groupId>
@@ -81,8 +81,12 @@
 
 
 
-		<!-- SPRINGSIDE <dependency> <groupId>org.springside</groupId> <artifactId>springside-core</artifactId> 
-			<version>${springside.version}</version> </dependency> -->
+		<!-- SPRINGSIDE -->
+		<dependency>
+			<groupId>org.springside</groupId>
+			<artifactId>springside-core</artifactId>
+			<version>${springside.version}</version>
+		</dependency>
 
 		<!-- PERSISTENCE begin -->
 		<!-- hibernate -->
@@ -251,9 +255,14 @@
 		</dependency>
 		<!-- GENERAL UTILS end -->
 
-		<!-- TEST begin <dependency> <groupId>org.springside</groupId> <artifactId>springside-core</artifactId> 
-			<version>${springside.version}</version> <classifier>tests</classifier> <scope>test</scope> 
-			</dependency> -->
+		<!-- TEST begin -->
+		<dependency>
+			<groupId>org.springside</groupId>
+			<artifactId>springside-core</artifactId>
+			<version>${springside.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -365,6 +374,29 @@
 	</dependencyManagement>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+					<include>**/sql/*.*</include>
+					<include>**/ehcache/*.*</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<!-- compiler插件, 设定JDK版本 -->
 			<plugin>
@@ -377,6 +409,20 @@
 					<showWarnings>true</showWarnings>
 				</configuration>
 			</plugin>
+
+<!-- 			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.5.v20120716</version>
+				<configuration>
+					<stopPort>8001</stopPort>
+					<stopKey>foo</stopKey>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<webApp>
+						<contextPath>/teff</contextPath>
+					</webApp>
+				</configuration>
+			</plugin> -->
 
 			<!-- war打包插件, 设定war包名称不带版本号 -->
 			<plugin>
@@ -408,7 +454,7 @@
 				</dependencies>
 			</plugin>
 
-			<!-- 增加functional test的Source目录 -->
+			<!-- 增加functional test的Source目录
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -427,8 +473,8 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-
+ 			-->
+			
 			<!-- cobertura插件, 设置不需要计算覆盖率的类 -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
