@@ -6,8 +6,8 @@
 package org.springside.examples.quickstart;
 
 import org.eclipse.jetty.server.Server;
-import org.springside.modules.test.jetty.JettyFactory;
-import org.springside.modules.test.spring.Profiles;
+import org.springside.examples.quickstart.utils.jetty.JettyFactory;
+import org.springside.examples.quickstart.utils.jetty.Profiles;
 
 /**
  * 使用Jetty运行调试Web应用, 在Console输入回车快速重新加载应用.
@@ -18,8 +18,7 @@ public class QuickStartServer {
 
 	public static final int PORT = 8002;
 	public static final String CONTEXT = "/quickstart";
-	public static final String[] TLD_JAR_NAMES = new String[] { "sitemesh", "spring-webmvc", "shiro-web",
-			"springside-core" };
+	public static final String[] TLD_JAR_NAMES = new String[] { "sitemesh", "spring-webmvc", "shiro-web", "springside-core" };
 
 	public static void main(String[] args) throws Exception {
 		// 设定Spring的profile

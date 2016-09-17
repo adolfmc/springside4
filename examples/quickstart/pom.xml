@@ -397,7 +397,7 @@
 			</resource>
 		</resources>
 
-			<!-- compiler插件, 设定JDK版本 -->
+		<!-- compiler插件, 设定JDK版本 -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -409,20 +409,6 @@
 					<showWarnings>true</showWarnings>
 				</configuration>
 			</plugin>
-
-<!-- 			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.5.v20120716</version>
-				<configuration>
-					<stopPort>8001</stopPort>
-					<stopKey>foo</stopKey>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<webApp>
-						<contextPath>/teff</contextPath>
-					</webApp>
-				</configuration>
-			</plugin> -->
 
 			<!-- war打包插件, 设定war包名称不带版本号 -->
 			<plugin>

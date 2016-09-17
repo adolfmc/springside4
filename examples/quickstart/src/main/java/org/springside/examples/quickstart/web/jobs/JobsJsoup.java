@@ -103,53 +103,48 @@ public class JobsJsoup {
 		return doc;
 	}
 	
-	boolean is = false;
-	@Scheduled(cron = "0/5 * * * * ? ") // 间隔25分钟执行
+	@Scheduled(cron = "0 0/30 * * * ? ") // 间隔25分钟执行
 	public void execute() throws Exception {
-		if(is==false){
-			is = true;
-		}else{
-			return;
-		}
 		
 		
 		System.out.println(new Date() + "--------------------------------------------");
 		try {
 			String[] url = new String[] { 
-//					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91",
-//					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91&curPage=1",
-//					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91&curPage=2",
-//					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91&curPage=3",
-//					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91&curPage=4",
-//					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86",
-//					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86&curPage=1" ,
-//					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86&curPage=2",
-//					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86&curPage=3",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=1&sortFlag=15&fromSearchBtn=1&headckid=4c766a80cd31ce1a&key=%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=4bd94d46272257c2&key=%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88&ckid=4bd94d46272257c2&curPage=1",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=4bd94d46272257c2&key=%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88&ckid=4bd94d46272257c2&curPage=2",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=4bd94d46272257c2&key=%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88&ckid=4bd94d46272257c2&curPage=3",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=1&sortFlag=15&fromSearchBtn=1&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF&ckid=29ea10711a9d50cb&headckid=29ea10711a9d50cb&curPage=1",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF&ckid=29ea10711a9d50cb&headckid=29ea10711a9d50cb&curPage=2",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF&ckid=29ea10711a9d50cb&headckid=29ea10711a9d50cb&curPage=3",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF&ckid=29ea10711a9d50cb&headckid=29ea10711a9d50cb&curPage=4",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=1&sortFlag=15&fromSearchBtn=1&headckid=fff933876e2cf912&key=%E4%BA%A7%E5%93%81%E6%80%BB%E7%9B%91",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=27c52293bb493ae7&key=%E4%BA%A7%E5%93%81%E6%80%BB%E7%9B%91&ckid=27c52293bb493ae7&curPage=1",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=27c52293bb493ae7&key=%E4%BA%A7%E5%93%81%E6%80%BB%E7%9B%91&ckid=27c52293bb493ae7&curPage=2",
-//					"https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=27c52293bb493ae7&key=%E4%BA%A7%E5%93%81%E6%80%BB%E7%9B%91&ckid=27c52293bb493ae7&curPage=3",
 					
-					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=",
-					"https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=&curPage=1",
 					
 					
 			};
 			
 			List<String> urllist = new ArrayList<String>();
 			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=");
-			for (int i = 1; i <=1000; i++) {
-				urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=&curPage=" +( i+600));
-			}
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=&curPage=1");
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91");
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91&curPage=1");
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91&curPage=2");
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91&curPage=3");
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91&curPage=4");
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86");
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86&curPage=1");
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86&curPage=2");
+			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86&curPage=3");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=1&sortFlag=15&fromSearchBtn=1&headckid=4c766a80cd31ce1a&key=%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=4bd94d46272257c2&key=%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88&ckid=4bd94d46272257c2&curPage=1");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=4bd94d46272257c2&key=%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88&ckid=4bd94d46272257c2&curPage=2");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=4bd94d46272257c2&key=%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88&ckid=4bd94d46272257c2&curPage=3");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=1&sortFlag=15&fromSearchBtn=1&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF&ckid=29ea10711a9d50cb&headckid=29ea10711a9d50cb&curPage=1");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF&ckid=29ea10711a9d50cb&headckid=29ea10711a9d50cb&curPage=2");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF&ckid=29ea10711a9d50cb&headckid=29ea10711a9d50cb&curPage=3");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&key=%E7%A7%BB%E5%8A%A8%E7%AB%AF&ckid=29ea10711a9d50cb&headckid=29ea10711a9d50cb&curPage=4");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=1&sortFlag=15&fromSearchBtn=1&headckid=fff933876e2cf912&key=%E4%BA%A7%E5%93%81%E6%80%BB%E7%9B%91");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=27c52293bb493ae7&key=%E4%BA%A7%E5%93%81%E6%80%BB%E7%9B%91&ckid=27c52293bb493ae7&curPage=1");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=27c52293bb493ae7&key=%E4%BA%A7%E5%93%81%E6%80%BB%E7%9B%91&ckid=27c52293bb493ae7&curPage=2");
+			urllist.add("https://www.liepin.com/zhaopin/?industries=&dqs=020&salary=&jobKind=&pubTime=&compkind=&compscale=&industryType=&searchType=1&clean_condition=&isAnalysis=&init=-1&sortFlag=15&fromSearchBtn=2&headckid=27c52293bb493ae7&key=%E4%BA%A7%E5%93%81%E6%80%BB%E7%9B%91&ckid=27c52293bb493ae7&curPage=3");
+//			
+//			urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=");
+//			for (int i = 1; i <=500; i++) {
+//				urllist.add("https://www.liepin.com/sh/zhaopin/?sfrom=click-pc_homepage-centre_searchbox-search_new&key=&curPage=" +( i));
+//			}
 			
 			saveInfo(urllist);
 		} catch (Exception e) {
