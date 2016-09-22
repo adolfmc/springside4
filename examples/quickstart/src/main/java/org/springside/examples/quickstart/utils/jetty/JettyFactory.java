@@ -44,8 +44,7 @@ public class JettyFactory {
 	}
 
 	/**
-	 * 设置除jstl-*.jar外其他含tld文件的jar包的名称.
-	 * jar名称不需要版本号，如sitemesh, shiro-web
+	 * 设置除jstl-*.jar外其他含tld文件的jar包的名称. jar名称不需要版本号，如sitemesh, shiro-web
 	 */
 	public static void setTldJarNames(Server server, String... jarNames) {
 		WebAppContext context = (WebAppContext) server.getHandler();
@@ -54,8 +53,7 @@ public class JettyFactory {
 			jarNameExprssions.add(".*/" + jarName + "-[^/]*\\.jar$");
 		}
 
-		context.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
-				StringUtils.join(jarNameExprssions, '|'));
+		context.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", StringUtils.join(jarNameExprssions, '|'));
 
 	}
 

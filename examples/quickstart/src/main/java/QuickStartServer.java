@@ -1,9 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2005, 2014 springside.github.io
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- *******************************************************************************/
-package org.springside.examples.quickstart;
+
+
+
 
 import org.eclipse.jetty.server.Server;
 import org.springside.examples.quickstart.utils.jetty.JettyFactory;
@@ -18,7 +15,8 @@ public class QuickStartServer {
 
 	public static final int PORT = 8002;
 	public static final String CONTEXT = "/quickstart";
-	public static final String[] TLD_JAR_NAMES = new String[] { "sitemesh", "spring-webmvc", "shiro-web", "springside-core" };
+	public static final String[] TLD_JAR_NAMES = new String[] { "sitemesh", "spring-webmvc", "shiro-web",
+			"springside-core" };
 
 	public static void main(String[] args) throws Exception {
 		// 设定Spring的profile

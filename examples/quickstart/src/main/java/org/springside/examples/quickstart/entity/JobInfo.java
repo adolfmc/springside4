@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,19 @@ public class JobInfo extends IdEntity {
 	private String memo;
 	private String memo1;
 	private String memo2;
+	private User user;
+	
+	
+	// JPA 基于USER_ID列的多对一关系定义
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	@Column(length=1000)
 	public String getJobinfo() {
